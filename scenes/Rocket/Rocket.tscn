@@ -5,7 +5,6 @@
 [ext_resource path="res://scenes/RocketParts/FuelTanks/FuelTank.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Player/PersonCamera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/RocketParts/RCSThruster/RCSThrusterTemplate.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/RocketParts/Parachute/Parachute.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Curve3D" id=1]
 _data = {
@@ -20,13 +19,13 @@ script = ExtResource( 2 )
 curve = SubResource( 1 )
 
 [node name="Engine" parent="." instance=ExtResource( 1 )]
-mass = 152.73
 custom_integrator = true
 affected_by_gravity = false
 
 [node name="Tank" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 custom_integrator = true
+affected_by_gravity = false
 
 [node name="PersonCamera" parent="Tank" instance=ExtResource( 4 )]
 
@@ -41,12 +40,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 0 )
 mass = 0.01
 custom_integrator = true
 affected_by_gravity = false
-
-[node name="RCS3" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 0 )
-mass = 0.01
-custom_integrator = true
-affected_by_gravity = false
-
-[node name="Parachute" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.999999, 0.00171042, 0, -0.00171042, 0.999999, 0, 0, 0, 1, 0, 3.819, 0 )

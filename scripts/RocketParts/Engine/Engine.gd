@@ -43,7 +43,7 @@ func _consume_fuel():
 
 func _integrate_forces(state):
 	_integrate_engine_thrust(state)
-	add_central_force(Vector3.DOWN*mass)
+	add_central_force(Vector3.DOWN*2)
 	
 func tilt_enine(direction : Vector2):
 	var rotation_clamped_x = clamp(rotation_degrees.x + direction.x,min_tilt.x,max_tilt.x)
