@@ -32,14 +32,14 @@ func fire_thrusters_global(dir : Vector3, strength : float):
 	fire_thrusters(dir,strength)
 
 func fire_thrusters(dir : Vector3, strength : float):
-	print("fired thrusters dir: ",dir, "strength:",strength)
 	if dir == Vector3.ZERO:
 		thruster_pos_x_percentage = 0
 		thruster_pos_y_percentage = 0
 		thruster_neg_y_percentage = 0
 		thruster_pos_z_percentage = 0
 		thruster_neg_z_percentage = 0
-	
+	else:
+		print("fired thrusters dir: ",dir, "strength:",strength)
 	if strength > 1: 
 		strength = 1
 	elif strength < 0:
@@ -77,7 +77,7 @@ func _integrate_thruster_forces(_state):
 	var thruster_neg_z_force = thruster_force * thruster_neg_z_percentage *thruster_neg_z.global_transform.basis.y.normalized()
 
 	
-	print(thruster_pos_x_force,thruster_pos_y_force, thruster_neg_y_force,thruster_pos_z_force,thruster_neg_z_force)
+	#print(thruster_pos_x_force,thruster_pos_y_force, thruster_neg_y_force,thruster_pos_z_force,thruster_neg_z_force)
 	rocket_add_force(thruster_pos_x_force,thruster_pos_x.translation)
 	rocket_add_force(thruster_pos_y_force,thruster_pos_y.translation)
 	rocket_add_force(thruster_neg_y_force,thruster_neg_y.translation)

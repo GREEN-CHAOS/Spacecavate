@@ -18,6 +18,5 @@ func _physics_process(delta):
 		var pointsarray = []
 		for point in curve.get_point_count():
 			pointsarray.append(curve.get_point_position(point))
-		print(pointsarray)
 	set_physics_process(false)
 
