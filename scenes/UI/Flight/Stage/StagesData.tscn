@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/UI/Flight/Stages/StagesData.gd" type="Script" id=1]
+
+[node name="StagesData" type="GridContainer"]
+margin_left = 20.0
+margin_right = 180.0
+margin_bottom = 50.0
+columns = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+deltav_node = NodePath("deltavNumber")
+fuel_percentage_node = NodePath("FuelPercentageNumber")
+fuel_liters_node = NodePath("FuelLitersNumber")
+
+[node name="deltav" type="Label" parent="."]
+margin_right = 39.0
+margin_bottom = 14.0
+text = "deltav"
+
+[node name="deltavNumber" type="Label" parent="."]
+margin_left = 43.0
+margin_right = 84.0
+margin_bottom = 14.0
+text = "10m/s"
+
+[node name="FuelPercentage" type="Label" parent="."]
+margin_top = 18.0
+margin_right = 39.0
+margin_bottom = 32.0
+text = "Fuel"
+
+[node name="FuelPercentageNumber" type="Label" parent="."]
+margin_left = 43.0
+margin_top = 18.0
+margin_right = 84.0
+margin_bottom = 32.0
+text = "30%"
+
+[node name="FuelLiters" type="Label" parent="."]
+margin_top = 36.0
+margin_right = 39.0
+margin_bottom = 50.0
+text = "Fuel"
+percent_visible = 0.0
+
+[node name="FuelLitersNumber" type="Label" parent="."]
+margin_left = 43.0
+margin_top = 36.0
+margin_right = 84.0
+margin_bottom = 50.0
+text = "100k l"

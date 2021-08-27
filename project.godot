@@ -63,6 +63,11 @@ _global_script_classes=[ {
 "class": "Tank",
 "language": "GDScript",
 "path": "res://scripts/RocketParts/FuelTank/Tank.gd"
+}, {
+"base": "VBoxContainer",
+"class": "TreeItemExpand",
+"language": "GDScript",
+"path": "res://scripts/UI/VehicleBuilder/TreeItemExpand.gd"
 } ]
 _global_script_class_icons={
 "Engine": "",
@@ -75,7 +80,8 @@ _global_script_class_icons={
 "RCSThruster": "",
 "Rocket": "",
 "Stage": "",
-"Tank": ""
+"Tank": "",
+"TreeItemExpand": ""
 }
 
 [application]
