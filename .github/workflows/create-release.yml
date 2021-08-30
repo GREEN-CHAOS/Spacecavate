@@ -2,6 +2,9 @@ on:
   push:
     branches:
       - experimental
+  pull_request:
+    branches:
+      - experimental
 
 jobs:
   export_game:
