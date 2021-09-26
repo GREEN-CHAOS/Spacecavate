@@ -11,9 +11,6 @@ var parachute
 var camera
 
 func _process(delta):
-	get_parent().get_node("Control/Label2").text = String(engine.on)
-	get_parent().get_node("Control/Label5").text = String(tank.tanks[0].current_fuel_amount)
-	get_parent().get_node("Control/Label6").text = String(tank.tanks[1].current_fuel_amount)
 	pass
 
 func _ready():
@@ -32,16 +29,6 @@ func _link_parts():
 	#get_parent().get_node("GravityObject").mass = 1000000
 	#_link_parts()
 	
-func _link_parts():
-	tank.get_node("Joint").set_node_a(tank.get_path())
-	tank.get_node("Joint").set_node_b(engine.get_path())
-	rcs.get_node("Joint").set_node_a(rcs.get_path())
-	rcs.get_node("Joint").set_node_b(tank.get_path())
-	rcs2.get_node("Joint").set_node_a(rcs2.get_path())
-	rcs2.get_node("Joint").set_node_b(tank.get_path())
-	rocket.get_node("Engine").connected_tank = tank
-	parachute.get_node("Joint").set_node_a(parachute.get_path())
-	parachute.get_node("Joint") .set_node_b(engine.get_path())
 	
 
 func _input(event):

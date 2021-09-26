@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/UI/Flight/RocketStats.gd" type="Script" id=1]
+
+[node name="GeneralData" type="GridContainer"]
+margin_right = 200.0
+margin_bottom = 50.0
+columns = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+height_node = NodePath("HeightNumber")
+velocity_node = NodePath("velocityNumber")
+deltav_node = NodePath("deltavleftNumber")
+fuel_percentage_node = NodePath("FuelPercentageNumber")
+
+[node name="Height" type="Label" parent="."]
+margin_right = 54.0
+margin_bottom = 14.0
+text = "Height:"
+
+[node name="HeightNumber" type="Label" parent="."]
+margin_left = 58.0
+margin_right = 103.0
+margin_bottom = 14.0
+text = "1000m"
+
+[node name="velocity" type="Label" parent="."]
+margin_top = 18.0
+margin_right = 54.0
+margin_bottom = 32.0
+text = "velocity:"
+
+[node name="velocityNumber" type="Label" parent="."]
+margin_left = 58.0
+margin_top = 18.0
+margin_right = 103.0
+margin_bottom = 32.0
+text = "50m/s"
+
+[node name="deltavleft" type="Label" parent="."]
+margin_top = 36.0
+margin_right = 54.0
+margin_bottom = 50.0
+text = "deltav:"
+
+[node name="deltavleftNumber" type="Label" parent="."]
+margin_left = 58.0
+margin_top = 36.0
+margin_right = 103.0
+margin_bottom = 50.0
+text = "50m/s"
+
+[node name="FuelPercentage" type="Label" parent="."]
+margin_top = 54.0
+margin_right = 54.0
+margin_bottom = 68.0
+text = "Fuel"
+
+[node name="FuelPercentageNumber" type="Label" parent="."]
+margin_left = 58.0
+margin_top = 54.0
+margin_right = 103.0
+margin_bottom = 68.0
+text = "70%"

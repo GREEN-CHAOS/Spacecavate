@@ -1,0 +1,244 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scenes/UI/Flight/Stage/Stages.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/UI/Flight/FlightUI.gd" type="Script" id=2]
+[ext_resource path="res://scripts/UI/Flight/RocketSelector.gd" type="Script" id=3]
+[ext_resource path="res://scripts/UI/Flight/RocketStats.gd" type="Script" id=4]
+[ext_resource path="res://scripts/UI/TabSelector.gd" type="Script" id=5]
+[ext_resource path="res://scripts/UI/Flight/Stages/Stages.gd" type="Script" id=6]
+[ext_resource path="res://scripts/UI/Flight/Transfer/Transfers.gd" type="Script" id=7]
+[ext_resource path="res://scenes/UI/Flight/Transfer/Transfers.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/UI/Flight/GeneralData.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scripts/UI/Flight/RotationIndicator.gd" type="Script" id=10]
+[ext_resource path="res://scenes/UI/Flight/RocketButton.tscn" type="PackedScene" id=11]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="Environment" id=2]
+ambient_light_color = Color( 0.470588, 0.470588, 0.470588, 0.945098 )
+
+[node name="Flight" type="Tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+drag_to_rearrange_enabled = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bottom" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Bottom"]
+margin_top = 768.0
+margin_right = 1600.0
+margin_bottom = 782.0
+text = "T+20:30.153"
+align = 1
+
+[node name="Label2" type="Label" parent="Bottom"]
+margin_top = 786.0
+margin_right = 1600.0
+margin_bottom = 800.0
+text = "min:sec"
+align = 1
+
+[node name="HUDRight" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -200.0
+grow_horizontal = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="VBoxContainer" parent="HUDRight"]
+margin_right = 200.0
+margin_bottom = 50.0
+grow_horizontal = 0
+rect_min_size = Vector2( 200, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HUDRight/Time"]
+margin_right = 200.0
+margin_bottom = 14.0
+text = "Time"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="HUDRight/Time"]
+margin_top = 18.0
+margin_right = 200.0
+margin_bottom = 32.0
+text = "20:10:45.117"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="HUDRight/Time"]
+margin_top = 36.0
+margin_right = 200.0
+margin_bottom = 50.0
+text = "2035"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="HUDRight"]
+margin_top = 54.0
+margin_right = 200.0
+margin_bottom = 254.0
+rect_min_size = Vector2( 200, 200 )
+stretch = true
+script = ExtResource( 10 )
+mesh = NodePath("Viewport/Spatial/MeshInstance")
+
+[node name="Viewport" type="Viewport" parent="HUDRight/ViewportContainer"]
+size = Vector2( 200, 200 )
+size_override_stretch = true
+own_world = true
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Spatial" type="Spatial" parent="HUDRight/ViewportContainer/Viewport"]
+
+[node name="MeshInstance" type="MeshInstance" parent="HUDRight/ViewportContainer/Viewport/Spatial"]
+transform = Transform( -0.056615, -0.298044, -0.847328, -0.125734, 0.84328, -0.288219, 0.889374, 0.100245, -0.0946852, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="HUDRight/ViewportContainer/Viewport/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.44784 )
+environment = SubResource( 2 )
+projection = 1
+current = true
+size = 4.74952
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUDRight"]
+margin_top = 258.0
+margin_right = 200.0
+margin_bottom = 382.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NotScrollable" type="VBoxContainer" parent="HUDRight/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 68.0
+
+[node name="GeneralData" type="GridContainer" parent="HUDRight/VBoxContainer/NotScrollable" instance=ExtResource( 9 )]
+margin_right = 200.0
+margin_bottom = 68.0
+columns = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+height_node = NodePath("HeightNumber")
+velocity_node = NodePath("velocityNumber")
+deltav_node = NodePath("deltavleftNumber")
+fuel_percentage_node = NodePath("FuelPercentageNumber")
+
+[node name="Scrollable" type="VBoxContainer" parent="HUDRight/VBoxContainer"]
+margin_top = 72.0
+margin_right = 200.0
+margin_bottom = 124.0
+
+[node name="Stages" type="VBoxContainer" parent="HUDRight/VBoxContainer/Scrollable" instance=ExtResource( 1 )]
+margin_right = 200.0
+margin_bottom = 24.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Transfers" type="VBoxContainer" parent="HUDRight/VBoxContainer/Scrollable" instance=ExtResource( 8 )]
+margin_top = 28.0
+margin_right = 200.0
+margin_bottom = 52.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tabs" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+margin_right = -200.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabSelector" type="HBoxContainer" parent="Tabs"]
+margin_right = 1400.0
+margin_bottom = 20.0
+alignment = 1
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Tabs/TabSelector"]
+margin_left = 587.0
+margin_right = 812.0
+margin_bottom = 20.0
+alignment = 1
+
+[node name="Flight" type="Button" parent="Tabs/TabSelector/HBoxContainer"]
+margin_right = 47.0
+margin_bottom = 20.0
+toggle_mode = true
+text = "Flight"
+
+[node name="Map" type="Button" parent="Tabs/TabSelector/HBoxContainer"]
+margin_left = 51.0
+margin_right = 90.0
+margin_bottom = 20.0
+toggle_mode = true
+text = "Map"
+
+[node name="Settings" type="Button" parent="Tabs/TabSelector/HBoxContainer"]
+margin_left = 94.0
+margin_right = 157.0
+margin_bottom = 20.0
+toggle_mode = true
+text = "Settings"
+
+[node name="ShipInfo" type="Button" parent="Tabs/TabSelector/HBoxContainer"]
+margin_left = 161.0
+margin_right = 225.0
+margin_bottom = 20.0
+toggle_mode = true
+text = "ShipInfo"
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="Tabs"]
+margin_top = 24.0
+margin_right = 1400.0
+margin_bottom = 24.0
+follow_focus = true
+scroll_vertical_enabled = false
+script = ExtResource( 3 )
+rocket_button = ExtResource( 11 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Tabs/ScrollContainer2"]
+
+[connection signal="deltav_changed" from="." to="HUDRight/VBoxContainer/NotScrollable/GeneralData" method="deltav_changed"]
+[connection signal="fuel_percentage_changed" from="." to="HUDRight/VBoxContainer/NotScrollable/GeneralData" method="fuel_percentage_changed"]
+[connection signal="height_changed" from="." to="HUDRight/VBoxContainer/NotScrollable/GeneralData" method="height_changed"]
+[connection signal="stage_new" from="." to="HUDRight/VBoxContainer/Scrollable/Stages" method="stage_new"]
+[connection signal="stage_property_changed" from="." to="HUDRight/VBoxContainer/Scrollable/Stages" method="stage_property_changed"]
+[connection signal="transfer_new" from="." to="HUDRight/VBoxContainer/Scrollable/Transfers" method="transfer_new"]
+[connection signal="transfer_property_changed" from="." to="HUDRight/VBoxContainer/Scrollable/Transfers" method="transfer_property_changed"]
+[connection signal="velocity_changed" from="." to="HUDRight/VBoxContainer/NotScrollable/GeneralData" method="velocity_changed"]
